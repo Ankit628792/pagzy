@@ -1,9 +1,9 @@
-import React from 'react'
 import Icons from '../global/icons'
 import { Heart } from 'lucide-react'
 import Link from 'next/link'
 
 function Footer() {
+
     return (
         <footer className='flex flex-col items-center justify-center border-t border-border pt-16 pb-8 px-6 lg:px-8 w-full max-w-6xl m-auto lg:pt-32 relative'>
 

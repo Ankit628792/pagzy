@@ -1,9 +1,25 @@
+"use client"
 import Link from 'next/link'
 import Icons from '../global/icons'
-import { buttonVariants } from '../ui/button'
+import { Button, buttonVariants } from '../ui/button'
+import { useEffect, useState } from 'react';
+import { account } from '@/appwrite';
 
 function Navbar() {
-    const user = false;
+    const [user, setUser] = useState<any>(null);
+
+    const login = async () => {
+        setUser(await account.get());
+    }
+
+    useEffect(() => {
+        login()
+    }, [])
+
+    const logout = async () => {
+        await account.deleteSession("current");
+        setUser(null);
+    };
 
     return (
         <header className='px-4 h-14 sticky top-0 inset-x-0 w-full bg-background/40 backdrop-blur-lg box-border border-border z-50'>
@@ -35,15 +51,18 @@ function Navbar() {
                 </nav>
 
                 <div className='flex items-center gap-4'>
-{
-    user ?
-    "user button"
-    :
-    <>
-    <Link href={"#"} className={buttonVariants({size: "sm", variant: "ghost"})}>Login</Link>
-    <Link href={"#"} className={buttonVariants({size: "sm", className: "hidden md:flex"})}>Start free trial</Link>
-    </>
-}
+                    {
+                        user ?
+                            <>
+                                <span>{user?.name?.split("@")[0]}</span>
+                                <Button onClick={logout}>Logout</Button>
+                            </>
+                            :
+                            <>
+                                <Link href={"/login"} className={buttonVariants({ size: "sm", variant: "ghost" })}>Login</Link>
+                                <Link href={"/login"} className={buttonVariants({ size: "sm", className: "hidden md:flex" })}>Start free trial</Link>
+                            </>
+                    }
                 </div>
             </div>
 

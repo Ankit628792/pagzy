@@ -11,11 +11,12 @@ import { cn } from "@/lib/utils";
 import { ArrowRight, ChevronRight, User, Zap } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 
 const HomePage = () => {
     const firstRow = reviews.slice(0, reviews.length / 2)
-    const secondRow = reviews.slice(reviews.length / 2)
+    const secondRow = reviews.slice(reviews.length / 2);
+
+
     return (
         <section className="w-full relative flex flex-col items-center justify-center px-4 md:px-0 py-8">
             <Wrapper>
@@ -104,7 +105,7 @@ const HomePage = () => {
             </Wrapper>
 
             <Wrapper className="flex flex-col items-center justify-center py-12 relative">
-            <div className='hidden lg:block absolute top-1/2 -right-1/4 bg-primary w-72 h-72 rounded-full -z-10 blur-[14rem]'></div>
+                <div className='hidden lg:block absolute top-1/2 -right-1/4 bg-primary w-72 h-72 rounded-full -z-10 blur-[14rem]'></div>
 
                 <Container>
                     <div className="max-w-md md:mx-auto text-start md:text-center">
@@ -147,7 +148,7 @@ const HomePage = () => {
             </Wrapper>
 
             <Wrapper className="flex flex-col items-center justify-center py-12 relative">
-            <div className='hidden lg:block absolute bottom-0 -left-1/4 bg-primary w-72 h-72 rounded-full -z-10 blur-[14rem]'></div>
+                <div className='hidden lg:block absolute bottom-0 -left-1/4 bg-primary w-72 h-72 rounded-full -z-10 blur-[14rem]'></div>
 
                 <Container>
                     <div className="max-w-md md:mx-auto text-start md:text-center">
